@@ -8,9 +8,9 @@ The project explores how external APIs and large language models can work togeth
 
 ## Features
 
-- Retrieve weather information through an external API.
+- Retrieve real-time weather data from the OpenWeatherMap API.
 - Process weather data using Python and Flask.
-- Integrate Ollama to generate AI-powered responses.
+- Generate travel advice and a fun fact about the city with a local model (Qwen 3.5 4B via Ollama).
 - Display weather information and recommendations through a web interface.
 
 ## Technologies
@@ -19,15 +19,15 @@ The project explores how external APIs and large language models can work togeth
 - **Flask** — Web application framework.
 - **HTML, CSS, JavaScript** — Frontend interface.
 - **Ollama** — Local AI model integration.
-- **Weather API** — Real-time meteorological data.
+- **OpenWeatherMap API** — Real-time meteorological data.
 
 ## Installation
 
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-cd YOUR_REPOSITORY
+git clone https://github.com/FrancescoPanza07/Smart-Meteo-Assistant.git
+cd Smart-Meteo-Assistant
 ```
 
 **2. Create a virtual environment**
@@ -42,6 +42,12 @@ Activate the environment on Windows:
 .\.venv\Scripts\Activate.ps1
 ```
 
+Activate the environment on macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
 **3. Install dependencies**
 
 ```bash
@@ -50,11 +56,21 @@ python -m pip install -r requirements.txt
 
 **4. Configure the environment**
 
-Create a `.env` file and add the required API credentials according to the configuration used by the application.
+Get a free API key from [OpenWeatherMap](https://openweathermap.org/api), then create a `.env` file in the project folder:
+
+```
+OPENWEATHER_API_KEY=your_api_key
+```
 
 **5. Configure Ollama**
 
-Install Ollama and download the AI model required by the application. Make sure Ollama is running before starting the project.
+Install [Ollama](https://ollama.com), then download the model used by the app:
+
+```bash
+ollama pull qwen3.5:4b
+```
+
+Make sure Ollama is running before starting the project.
 
 **6. Run the application**
 
@@ -62,9 +78,11 @@ Install Ollama and download the AI model required by the application. Make sure 
 python app.py
 ```
 
+Then open http://127.0.0.1:5000 in your browser.
+
 ## How It Works
 
-1. The application retrieves weather information from an external API.
+1. The user enters a city and the application retrieves its weather from OpenWeatherMap.
 2. Flask processes the data and prepares the information for the AI model.
 3. Ollama generates a contextual response based on the available weather data.
 4. The application displays the result through the web interface.
